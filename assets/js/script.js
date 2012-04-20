@@ -38,8 +38,10 @@ $(document).ready(function(){
 		
 		webcam.freeze();
 		
-		webcam.upload();
-		webcam.reset();
+		setTimeout(function() {
+		  webcam.upload();
+		  webcam.reset();
+	  }, 500);
 		
     // togglePane();
 		return false;
