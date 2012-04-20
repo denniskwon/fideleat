@@ -69,8 +69,13 @@
     $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/"+filename, $options, onRecognized);
   }
   
-  function onRecognized(url, data) {    
-    alert(data.uids);
+  function onRecognized(url, data) { 
+    var uids = data.photos[0].tags[0].uids;
+    if (uids.length > 0) {
+      alert("Welcome Back Dennis!");
+    } else {
+      alert("Welcome New Customer!");
+    }
   }
   
 </script>
