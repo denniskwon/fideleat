@@ -37,7 +37,11 @@ $(document).ready(function(){
 		}
 		
 		webcam.freeze();
-		togglePane();
+		
+		webcam.upload();
+		webcam.reset();
+		
+    // togglePane();
 		return false;
 	});
 	
