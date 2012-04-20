@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>FidelEat Dashboard</title>
+<title>GRS Dashboard</title>
 
 <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 <link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
@@ -11,7 +11,7 @@
 <body>
 
 <div id="topBar">
-    <h1 style="background-color: transparent; color: #555;">FidelEat Dashboard</h1>
+    <h1 style="background-color: transparent; color: #555;">GRS Dashboard</h1>
 </div>
 
 <div id="photos">
@@ -35,17 +35,27 @@
 </div>
 
 <div id="dennis" class="box">
-  <div style="font-weight: bold; color: #333; margin-bottom: 10px;">Welcome back, Dennis!</div>
+  <img style="float: left; padding-top: 4px;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/211769_711582_706603452_q.jpg"/>
+  <div style="color: #333; font-weight: bold; padding-left: 56px;">Dennis Kwon</div>
+  <div style="color: #333; padding-left: 56px; color: #777;">VIP</div>
+  <div style="clear: both;"></div>
   
-  <div><span style="color: #333;">Guest Name:</span> Dennis Kwon</div>
-  <div><span style="color: #333;"># of Visits:</span> 29</div>
-  <div><span style="color: #333;">Status:</span> VIP</div>
+  <div style="background-color: white; padding: 6px; border: 1px solid #c0c0c0; margin-top: 10px;">
+  <div style="font-size: 18px;"><span style="color: #333; ">Visits:</span> 29</div>
+  <div style="font-size: 18px;"><span style="color: #333; ">Beverage: Altamura, Cabernet Sauvignon, 2007</span></div>
+  </div>
 </div>
 
 <div id="newguy" class="box">
-  <div><span style="color: #333;">Guest Name:</span> New Customer</div>
-  <div><span style="color: #333;"># of Visits:</span> 0</div>
-  <div><span style="color: #333;">Status:</span> New</div>
+  <img style="float: left; padding-top: 4px;" src="https://fbcdn-profile-a.akamaihd.net/static-ak/rsrc.php/v1/yo/r/UlIqmHJn-SK.gif"/>
+  <div style="color: #333; font-weight: bold; padding-left: 56px;">New Guest</div>
+  <div style="color: #333; padding-left: 56px; color: #777;"></div>
+  <div style="clear: both;"></div>
+  
+  <div style="background-color: white; padding: 6px; border: 1px solid #c0c0c0; margin-top: 10px;">
+  <div style="font-size: 18px;"><span style="color: #333; ">Visits:</span> 0</div>
+  <div style="font-size: 18px;"><span style="color: #333; ">Beverage: N/A</span></div>
+  </div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -84,12 +94,15 @@
   }
   
   function onRecognized(url, data) { 
-    var uids = data.photos[0].tags[0].uids;
-    if (uids.length > 0) {
-      slideIn("#dennis");
-    } else {
-      slideIn("#newguy");
+    if (data) {
+      var uids = data.photos[0].tags[0].uids;
+      if (uids.length > 0) {
+        slideIn("#dennis");
+        return;
+      } 
     }
+    
+    slideIn("#newguy");
   }
   
   function slideIn(id) {
@@ -99,7 +112,7 @@
     }, 500, function() {
       setTimeout(function() {
         slideOut(id);
-      }, 5000);
+      }, 8000);
     })    
   }
   
@@ -110,6 +123,10 @@
     }, 1000, function() {});
   }
   
+  // $(function() {
+  //   slideIn("#dennis");
+  // });
+  // 
 </script>
 
 </body>
