@@ -42,13 +42,16 @@
 <script src="script/api_client.js"></script>
 
 <script>
+  $facebook_id = "711582";
   $face_api_token = "a27a422e5fcec1b4167879b3afe27e0d";
   
   $api = new Face_ClientAPI($face_api_token);
   
-  var options = {};
+  var options = {
+    uids: $facebook_id + "@facebook.com"
+  };
   $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/ca5ba83130faf905f9505dc94fbbf70e.jpg", options, function() {
-    alert('hey');
+    
   });
   
 </script>
