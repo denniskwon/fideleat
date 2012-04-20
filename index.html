@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Your FidelEat Dashboard</title>
+<title>FidelEat Dashboard</title>
 
 <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 <link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
@@ -11,10 +11,11 @@
 <body>
 
 <div id="topBar">
-    <h1 style="background-color: transparent; color: #555;">Your FidelEat Dashboard</h1>
+    <h1 style="background-color: transparent; color: #555;">FidelEat Dashboard</h1>
 </div>
 
-<div id="photos"></div>
+<div id="photos">
+</div>
 
 <div id="camera">
 	<span class="tooltip"></span>
@@ -33,6 +34,19 @@
     <span class="settings"></span>
 </div>
 
+<div id="dennis" class="box">
+  <div style="font-weight: bold; color: #333; margin-bottom: 10px;">Welcome back, Dennis!</div>
+  
+  <div><span style="color: #333;">Guest Name:</span> Dennis Kwon</div>
+  <div><span style="color: #333;"># of Visits:</span> 29</div>
+  <div><span style="color: #333;">Status:</span> VIP</div>
+</div>
+
+<div id="newguy" class="box">
+  <div><span style="color: #333;">Guest Name:</span> New Customer</div>
+  <div><span style="color: #333;"># of Visits:</span> 0</div>
+  <div><span style="color: #333;">Status:</span> New</div>
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="assets/fancybox/jquery.easing-1.3.pack.js"></script>
@@ -72,10 +86,28 @@
   function onRecognized(url, data) { 
     var uids = data.photos[0].tags[0].uids;
     if (uids.length > 0) {
-      alert("Welcome Back Dennis!");
+      slideIn("#dennis");
     } else {
-      alert("Welcome New Customer!");
+      slideIn("#newguy");
     }
+  }
+  
+  function slideIn(id) {
+    $(id).animate({
+      right: "0",
+      display: 'toggle'
+    }, 500, function() {
+      setTimeout(function() {
+        slideOut(id);
+      }, 5000);
+    })    
+  }
+  
+  function slideOut(id) {
+    $(id).animate({
+      right: "-1000px",
+      display: "toggle"
+    }, 1000, function() {});
   }
   
 </script>
