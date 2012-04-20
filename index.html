@@ -69,7 +69,7 @@
     $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/"+filename, $options, onRecognized);
   }
   
-  function onRecognized(data) {    
+  function onRecognized(url, data) {    
     alert(data);
   }
   
