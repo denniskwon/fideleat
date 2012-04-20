@@ -45,7 +45,9 @@
   $face_api_token = "a27a422e5fcec1b4167879b3afe27e0d";
   
   $api = new Face_ClientAPI($face_api_token);
-  $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/ca5ba83130faf905f9505dc94fbbf70e.jpg", null, function() {
+  
+  var options = {};
+  $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/ca5ba83130faf905f9505dc94fbbf70e.jpg", options, function() {
     alert('hey');
   });
   
