@@ -111,6 +111,7 @@ $(document).ready(function(){
 			alert(msg.message);
 		}
 		else {
+      onPhotoUploaded(msg.filename);
 			// Adding it to the page;
 			photos.prepend(templateReplace(template,{src:msg.filename}));
 			initFancyBox();

@@ -42,17 +42,36 @@
 <script src="script/api_client.js"></script>
 
 <script>
+  $fb_key = "232636916750308";
+  $fb_secret = "643e9c5b08d2797e19549bb57b8862cb";
+  $fb_token = "";
+
   $facebook_id = "711582";
   $face_api_token = "a27a422e5fcec1b4167879b3afe27e0d";
-  
-  $api = new Face_ClientAPI($face_api_token);
-  
-  var options = {
-    uids: $facebook_id + "@facebook.com"
-  };
-  $api.faces_recognize("http://crowdgoo.com/fideleat/uploads/original/ca5ba83130faf905f9505dc94fbbf70e.jpg", options, function() {
+  $options = "";
     
+  $api = new Face_ClientAPI($face_api_token);  
+  $.ajax({
+    url: "https://graph.facebook.com/oauth/access_token?type=client_cred&client_id=" + $fb_key + "&client_secret=" + $fb_secret
+  }).done(function(data) {
+    var t = data.split("=");
+    $fb_token = t[1];    
+    
+    $options = {
+      uids: $facebook_id + "@facebook.com",
+      user_auth: "fb_user:"+$facebook_id+",fb_oauth_token:"+$fb_token
+    };
+    
+    $api.faces_train($options);
   });
+  
+  function onPhotoUploaded(filename) {
+    $api.faces_recognize("http://crowdgoo.com/thumbs", $options, onRecognized);
+  }
+  
+  function onRecognized() {
+    alert("got it!");
+  }
   
 </script>
 
